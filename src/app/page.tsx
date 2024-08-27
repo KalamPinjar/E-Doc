@@ -1,112 +1,121 @@
+import Navbar from "@/components/Navbar";
+import ParallaxUI from "@/components/ui/ParallaxUI";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+    <main className="z-30 h-screen">
+      <Navbar />
+      <div className="flex flex-col justify-between items-center p-24 min-h-screen">
+        <div className="lg:flex justify-between items-center w-full max-w-5xl font-mono text-sm">
+          <p className="drop-shadow max-w-2xl font-bold text-3xl">
+            One Place to All of Your Docs,
+            <br className="lg:block hidden" />
+            <span className="bg-clip-text bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 text-transparent animate-gradient">
+              Safe and Private
+            </span>
+           
+            <a
+              href="#"
+              className="inline-block relative dark:border-white/20 bg-clip-text bg-gray-200 dark:hover:bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-6 py-2 border hover:bg-clip-border border-black/20 dark:rounded-lg focus:ring w-3/4 font-medium text-black text-center text-lg text-transparent dark:text-white animate-gradient overflow-hidden group focus:outline-none"
+            >
+              <span className="group-hover:w-full top-0 left-0 absolute dark:border-white border-t-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
+              <span className="group-hover:h-full top-0 right-0 absolute dark:border-white border-r-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
+              <span className="group-hover:w-full right-0 bottom-0 absolute dark:border-white border-b-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
+              <span className="group-hover:h-full bottom-0 left-0 absolute dark:border-white border-black/75 border-l-2 w-0 h-0 transition-all duration-500 ease"></span>
+              Get Started
+            </a>
+          </p>
+          <div className="top-0 left-0 lg:static fixed flex justify-center items-end bg-gradient-to-t from-white dark:from-black via-white dark:via-black lg:bg-none w-full h-28 lg:size-auto">
+            <Link
+              className="flex flex-col place-items-center gap-2 lg:p-0 font-bold pointer-events-none lg:pointer-events-auto"
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ParallaxUI className="border-2 p-2 rounded-md">
+                <div className="flex gap-2 w-[100px] h-[100px]">
+                  <Image
+                    src="/images/logo.png"
+                    alt="logo"
+                    width={100}
+                    height={24}
+                  />
+                </div>
+              </ParallaxUI>
+            </Link>
+          </div>
+        </div>
+        <div className="grid lg:grid-cols-4 mb-32 lg:mb-0 lg:w-full lg:max-w-5xl text-center lg:text-left">
+          <Link
+            href="/docs"
+            className="hover:border-gray-300 hover:dark:border-neutral-700 hover:bg-gray-100 hover:dark:bg-neutral-800/30 px-5 py-4 border border-transparent rounded-lg transition-colors group"
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <h2 className="mb-3 font-semibold text-2xl">
+              Docs{" "}
+              <span className="inline-block motion-reduce:transform-none transition-transform group-hover:translate-x-1">
+                -&gt;
+              </span>
+            </h2>
+            <p className="opacity-50 m-0 max-w-[30ch] text-sm">
+              Find in-depth information about on how to use E-doc.
+            </p>
+          </Link>
+
+          <Link
+            href="/policy"
+            className="hover:border-gray-300 hover:dark:border-neutral-700 hover:bg-gray-100 hover:dark:bg-neutral-800/30 px-5 py-4 border border-transparent rounded-lg transition-colors group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className="mb-3 font-semibold text-2xl">
+              Learn{" "}
+              <span className="inline-block motion-reduce:transform-none transition-transform group-hover:translate-x-1">
+                -&gt;
+              </span>
+            </h2>
+            <p className="opacity-50 m-0 max-w-[30ch] text-sm">
+              Learn about our policy and privacy we provide.
+            </p>
+          </Link>
+
+          <Link
+            href="/reviews"
+            className="hover:border-gray-300 hover:dark:border-neutral-700 hover:bg-gray-100 hover:dark:bg-neutral-800/30 px-5 py-4 border border-transparent rounded-lg transition-colors group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className="mb-3 font-semibold text-2xl">
+              Reviews{" "}
+              <span className="inline-block motion-reduce:transform-none transition-transform group-hover:translate-x-1">
+                -&gt;
+              </span>
+            </h2>
+            <p className="opacity-50 m-0 max-w-[30ch] text-sm">
+              Read reviews of our users used our services
+            </p>
+          </Link>
+
+          <Link
+            href="/dashboard/help"
+            className="hover:border-gray-300 hover:dark:border-neutral-700 hover:bg-gray-100 hover:dark:bg-neutral-800/30 px-5 py-4 border border-transparent rounded-lg transition-colors group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2 className="mb-3 font-semibold text-2xl">
+              Help{" "}
+              <span className="inline-block motion-reduce:transform-none transition-transform group-hover:translate-x-1">
+                -&gt;
+              </span>
+            </h2>
+            <p className="opacity-50 m-0 max-w-[30ch] text-balance text-sm">
+              Ask for assitance from our AI to resolve your queries
+            </p>
+          </Link>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
       </div>
     </main>
   );
