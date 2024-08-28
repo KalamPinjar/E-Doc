@@ -7,6 +7,9 @@ export default function Home() {
   return (
     <main className="z-30 h-screen">
       <Navbar />
+      <div className="variant">
+        <div className="bg-image bg-image--blur"></div>
+      </div>
       <div className="flex flex-col justify-between items-center p-24 min-h-screen">
         <div className="lg:flex justify-between items-center w-full max-w-5xl font-mono text-sm">
           <p className="drop-shadow max-w-2xl font-bold text-3xl">
@@ -15,17 +18,16 @@ export default function Home() {
             <span className="bg-clip-text bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 text-transparent animate-gradient">
               Safe and Private
             </span>
-           
-            <a
+            <Link
               href="#"
-              className="inline-block relative dark:border-white/20 bg-clip-text bg-gray-200 dark:hover:bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-6 py-2 border hover:bg-clip-border border-black/20 dark:rounded-lg focus:ring w-3/4 font-medium text-black text-center text-lg text-transparent dark:text-white animate-gradient overflow-hidden group focus:outline-none"
+              className="inline-block relative dark:border-white/20 bg-clip-text bg-gray-200 dark:hover:bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-6 py-2 border dark:hover:bg-clip-border border-black/20 dark:rounded-lg focus:ring w-3/4 font-medium text-black text-center text-lg dark:text-white animate-gradient overflow-hidden group focus:outline-none"
             >
               <span className="group-hover:w-full top-0 left-0 absolute dark:border-white border-t-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
               <span className="group-hover:h-full top-0 right-0 absolute dark:border-white border-r-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
               <span className="group-hover:w-full right-0 bottom-0 absolute dark:border-white border-b-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
               <span className="group-hover:h-full bottom-0 left-0 absolute dark:border-white border-black/75 border-l-2 w-0 h-0 transition-all duration-500 ease"></span>
               Get Started
-            </a>
+            </Link>
           </p>
           <div className="top-0 left-0 lg:static fixed flex justify-center items-end bg-gradient-to-t from-white dark:from-black via-white dark:via-black lg:bg-none w-full h-28 lg:size-auto">
             <Link
@@ -72,7 +74,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className="mb-3 font-semibold text-2xl">
-              Learn{" "}
+              Policy{" "}
               <span className="inline-block motion-reduce:transform-none transition-transform group-hover:translate-x-1">
                 -&gt;
               </span>

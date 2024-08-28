@@ -57,7 +57,7 @@ export default function Navbar() {
   const { isSignedIn } = useAuth();
 
   return (
-    <NavigationMenu className="lg:block top-0 sticky hidden border-b">
+    <NavigationMenu className="lg:block top-0 sticky hidden bg-slate-950 border-b">
       <NavigationMenuList className="px-4">
         <NavigationMenuItem className="flex justify-center items-center border-2 bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-1 rounded-full w-12 h-12 animate-gradient">
           <Link href="/">
@@ -143,15 +143,17 @@ export default function Navbar() {
   );
 }
 
-const ListItem = React.forwardRef<
+
+export const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { href: string; title: string }
+>(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
+          href={href}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -162,9 +164,12 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
 });
+
 ListItem.displayName = "ListItem";
+
+

@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    --dark: #161616;
+    --blur: clamp(56px, 10vw, 80px);
+    --gradient: linear-gradient(-45deg, #5d00f2 40%, #0e8bff 30%, #07920e 30%);
+    --size: clamp(128px, 18vw, 256px);
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -60,9 +64,28 @@
 }
 
 @layer base {
+
+  :root {
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -74,18 +97,40 @@
   -moz-animation: animatedgradient 6s ease infinite alternate;
   animation: animatedgradient 6s ease infinite alternate;
 }
-.animate-gradient:hover{
+
+.animate-gradient:hover {
   transition: all 0.3s;
 
 }
+
 @keyframes animatedgradient {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
+}
+
+
+.variant {
+  position: absolute;
+  padding: clamp(3rem, 6vw, 5rem);
+}
+
+.bg-image {
+  width: var(--size);
+  height: var(--size);
+  background-image: var(--gradient);
+  border-radius: 50%;
+}
+
+
+.bg-image--blur {
+  filter: blur(var(--blur));
 }
