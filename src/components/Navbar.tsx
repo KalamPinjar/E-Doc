@@ -11,53 +11,18 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Image from "next/image";
 import { Home } from "lucide-react";
 import { ModeToggle } from "./Theme";
-import { SignedIn, SignUpButton, useAuth, useClerk, UserButton } from "@clerk/nextjs";
-import { Button } from "./ui/button";
-
-const dashboard: { title: string; href: string; description: string }[] = [
-  {
-    title: "Home 🏠",
-    href: "/dashboard/home",
-    description:
-      "Your personalized homepage showing recent activities and important updates.",
-  },
-  {
-    title: "Documents 📃",
-    href: "/dashboard/documents",
-    description: "Manage, upload, and view all your documents in one place.",
-  },
-  {
-    title: "Search 🔎",
-    href: "/dashboard/search",
-    description:
-      "Quickly find documents using advanced search and filtering options.",
-  },
-  {
-    title: "Upload 🔼",
-    href: "/dashboard/upload",
-    description: "Upload new documents and manage their categories and tags.",
-  },
-  {
-    title: "Important ⭐",
-    href: "/dashboard/important",
-    description: "Access your important documents with ease.",
-  },
-  {
-    title: "Help 📞",
-    href: "/dashboard/help",
-    description: "Get support and find answers to common questions.",
-  },
-];
+import { SignedIn, SignUpButton, useAuth, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const { isSignedIn } = useAuth();
 
   return (
-    <NavigationMenu className="lg:block top-0 sticky hidden bg-slate-950 border-b">
+    <NavigationMenu className="lg:block top-0 sticky hidden bg-white dark:bg-slate-950 border-b">
       <NavigationMenuList className="px-4">
         <NavigationMenuItem className="flex justify-center items-center border-2 bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-1 rounded-full w-12 h-12 animate-gradient">
           <Link href="/">
@@ -105,20 +70,11 @@ export default function Navbar() {
         </NavigationMenuItem>
         {isSignedIn && (
           <NavigationMenuItem className="flex-1 p-2">
-            <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="gap-3 grid md:grid-cols-2 p-4 w-[400px] md:w-[500px] lg:w-[600px]">
-                {dashboard.map((list) => (
-                  <ListItem
-                    key={list.title}
-                    title={list.title}
-                    href={list.href}
-                  >
-                    {list.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
+            <Link href="/dashboard/home" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Dashboard
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
         )}
         <NavigationMenuItem className="p-2">
@@ -132,17 +88,15 @@ export default function Navbar() {
               </SignedIn>
             </div>
           ) : (
-            <div className="bg-orange-500/90 hover:bg-orange-500 px-4 py-2 rounded-lg text-[14px] text-primary-foreground">
+            <div className="bg-orange-500/90 hover:bg-orange-500 px-5 py-2 rounded-lg w-[6rem] h-10 text-[14px] text-primary-foreground">
               <SignUpButton />
             </div>
           )}
-         
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
 }
-
 
 export const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -171,5 +125,3 @@ export const ListItem = React.forwardRef<
 });
 
 ListItem.displayName = "ListItem";
-
-

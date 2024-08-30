@@ -1,7 +1,11 @@
-
-
 import { BarChartDocs } from "@/components/BarChartDocs";
 import { CarouselDocs } from "@/components/CarouselDocs";
+import Menu from "../components/Menu";
+import Upload from "../components/Upload";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { File } from "lucide-react";
 
 const Home = () => {
   return (

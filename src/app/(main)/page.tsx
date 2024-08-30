@@ -1,9 +1,43 @@
+"use client";
 import Navbar from "@/components/Navbar";
 import ParallaxUI from "@/components/ui/ParallaxUI";
+import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { isSignedIn, userId } = useAuth();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      // console.log("User is signed in with userId:", userId);
+      const storeUserData = async () => {
+        try {
+          const response = await fetch("/api/storeUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+
+            },
+            body: JSON.stringify({ userId }),
+          });
+
+          if (response.ok) {
+            console.log("User data stored successfully");
+            // Redirect or perform other actions
+          } else {
+            console.error("Failed to store user data");
+          }
+        } catch (error) {
+          console.error("Error storing user data:", error);
+        }
+      };
+
+      storeUserData();
+    }
+  }, [isSignedIn, userId]);
+
   return (
     <main className="z-30 h-screen">
       <Navbar />
@@ -19,7 +53,7 @@ export default function Home() {
               Safe and Private
             </span>
             <Link
-              href="#"
+              href="/dashboard/home"
               className="inline-block relative dark:border-white/20 bg-clip-text bg-gray-200 dark:hover:bg-gradient-to-r from-purple-700 via-blue-500 to-green-400 mt-6 py-2 border dark:hover:bg-clip-border border-black/20 dark:rounded-lg focus:ring w-3/4 font-medium text-black text-center text-lg dark:text-white animate-gradient overflow-hidden group focus:outline-none"
             >
               <span className="group-hover:w-full top-0 left-0 absolute dark:border-white border-t-2 border-black/75 w-0 h-0 transition-all duration-500 ease"></span>
