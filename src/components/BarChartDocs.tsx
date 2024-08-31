@@ -16,20 +16,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-const chartData = [
-  { month: "January", documents: 186 },
-  { month: "February", documents: 305 },
-  { month: "March", documents: 237 },
-  { month: "April", documents: 73 },
-  { month: "May", documents: 209 },
-  { month: "June", documents: 214 },
-  { month: "July", documents: 4 },
-  { month: "August", documents: 24 },
-  { month: "September", documents: 664 },
-  { month: "October", documents: 104 },
-  { month: "November", documents: 100 },
-  { month: "December", documents: 291 },
-];
+import { useEffect, useState } from "react";
+
 
 const chartConfig = {
   documents: {
@@ -39,11 +27,26 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function BarChartDocs() {
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/chart");
+        const data = await response.json();
+        setChartData(data);
+      } catch (error) {
+        console.error("Failed to fetch chart data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
   return (
-    <Card className="flex flex-col mt-5 w-[500px] h-fit">
+    <Card className="flex flex-col mt-10 p-2 w-[500px] h-[400px]">
       <CardHeader>
         <CardTitle>Documents Upload Data</CardTitle>
-        <CardDescription>January - December </CardDescription>
+        <CardDescription>January - December {new Date().getFullYear()} </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -51,8 +54,14 @@ export function BarChartDocs() {
             accessibilityLayer
             data={chartData}
             margin={{
-              top: 20,
+              top: 25,
+              
             }}
+            barSize={20}
+            barCategoryGap={1}
+            barGap={0.5}
+            maxBarSize={40}
+            stackOffset="sign"
           >
             <CartesianGrid vertical={false} />
             <XAxis
@@ -60,6 +69,7 @@ export function BarChartDocs() {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
+              
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip
@@ -77,11 +87,7 @@ export function BarChartDocs() {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium text-sm leading-none">
-          Upload rate up by 5.2% this month <TrendingUp className="w-4 h-4" />
-        </div>
-      </CardFooter>
+      
     </Card>
   );
 }

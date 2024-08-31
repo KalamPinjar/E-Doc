@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="bg-white dark:bg-black">
       <Navbar />
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="relative border-[1px] border-gray-300 dark:border-slate-600 bg-[#fafafa] dark:bg-slate-950 shadow-black shadow-lg dark:shadow-sm dark:shadow-white m-2 px-4 sm:px-6 lg:px-8 p-2 rounded-lg max-w-7xl min-h-screen text-black">
+      <div className="relative border-[1px] border-gray-300 dark:border-slate-600 bg-[#fafafa] dark:bg-slate-950 shadow-black shadow-lg dark:shadow-sm dark:shadow-white m-2 mx-auto px-4 sm:px-6 lg:px-8 p-2 rounded-lg max-w-7xl min-h-screen text-black">
         <NextSSRPlugin
           /**
            * The `extractRouterConfig` will extract **only** the route configs
