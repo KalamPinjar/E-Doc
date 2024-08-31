@@ -18,7 +18,7 @@ model User {
   id        String   @id @default(uuid())
   userId    String   @unique
   email     String   @db.Text
-  files     File[]   @relation("UserFiles")
+  files     File[]   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -26,9 +26,10 @@ model User {
 model File {
   id        String   @id @default(uuid())
   name      String
+  fileKey   String
   url       String?
-  userId    String?  @map("userId") // Maps to userId column in the database
-  user      User?    @relation("UserFiles", fields: [userId], references: [id])
+  fileId    String
+  user      User?    @relation(fields: [fileId], references: [userId])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

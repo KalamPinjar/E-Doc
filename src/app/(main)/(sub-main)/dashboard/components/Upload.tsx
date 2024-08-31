@@ -9,13 +9,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { CirclePlus } from "lucide-react";
+import { ClientUploadedFileData } from "uploadthing/types";
 
 const Upload = () => {
   const [isMounted, setIsMounted] = useState(false);
-  const router = useRouter();
+
+  const handleUpload = (
+    res: ClientUploadedFileData<{ uploadedBy: string }>[]
+  ) => {
+    toast.success("Files uploaded successfully");
+    window.location.reload();
+    console.log("Files uploaded successfully", res);
+  };
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -42,11 +50,7 @@ const Upload = () => {
             className="flex justify-center items-center dark:bg-slate-800 w-full h-full ut-allowed-content:ut-uploading:text-red-300 cursor-pointer"
             endpoint="fileUploader"
             onClientUploadComplete={(res) => {
-              // Do something with the response
-              console.log("Files: ", res);
-              toast.success("File uploaded successfully");
-              setIsMounted(false);
-              router.refresh();
+              handleUpload(res);
             }}
             onUploadError={(error: Error) => {
               // Do something with the error.

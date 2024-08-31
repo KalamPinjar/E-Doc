@@ -26,10 +26,14 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       const { userId } = metadata;
+      if (!userId) {
+        console.error("No userId found in metadata.");
+        throw new Error("No userId provided.");
+      }
 
-      console.log("Upload complete for userId:", userId);
-      console.log("file url", file.url);
       try {
+        console.log("Upload complete for userId:", userId);
+        console.log("file url", file.url);
         console.log("Looking for user with userId:", userId);
         // Verify that the user exists
         const user = await db.user.findUnique({
@@ -48,7 +52,8 @@ export const ourFileRouter = {
           data: {
             name: file.name,
             url: file.url,
-            userId: userId,
+            fileId: userId,
+            fileKey: file.key,
           },
         });
 
