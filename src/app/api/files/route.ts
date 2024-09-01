@@ -1,28 +1,26 @@
-import { db } from "@/db";
-import { currentProfile } from "@/lib/current-profile";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/db';
+import { currentProfile } from '@/lib/current-profile';
 
-export async function GET(request: Request) {
+export async function GET(req: NextRequest) {
   try {
     const user = await currentProfile();
-
-    // Check if the user is authenticated
+    
     if (!user) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    // Fetch only files that belong to the authenticated user
-    const files = await db.file.findMany({
-      where: { fileId: user.userId },  // Scope to the authenticated user
-      include: {
-        user: true,
+    // Fetch only the files owned by the current user
+    const userFiles = await db.file.findMany({
+      where: {
+        fileId: user.userId, // Ensure that this matches your schema for file ownership
       },
     });
 
-    return NextResponse.json(files, { status: 200 });
+    return NextResponse.json(userFiles);
   } catch (error) {
-    console.error("Error retrieving files:", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
+    console.error('Error fetching user files:', error);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
 

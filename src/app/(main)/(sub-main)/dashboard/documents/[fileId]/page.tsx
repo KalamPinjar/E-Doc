@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import FileNavSidebar from "../../components/FileNavSidebar";
 
 const FileId = () => {
   const { fileId } = useParams<{ fileId: string }>();
@@ -31,7 +32,7 @@ const FileId = () => {
         const data = await response.json();
 
         setFile(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +59,7 @@ const FileId = () => {
       const data = await response.json();
 
       setAllFiles(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -103,27 +104,7 @@ const FileId = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-start items-center gap-4 bg-white shadow-sm mt-16 p-4 rounded-md w-[300px] h-fit">
-        <p className="mt-2 font-bold text-black">Your Files</p>
-        <div className="flex flex-col justify-start items-center gap-4 mt-2 h-fit">
-          <div>
-            {allFiles.map((file) => (
-              <>
-                <Link
-                  key={file.fileId}
-                  href={`/dashboard/documents/${file.id}`}
-                >
-                  <div className="flex justify-start items-center gap-2 mt-2 mb-2 py-2 text-black">
-                    <div className="bg-black rounded-full w-8 h-8"></div>
-                    {file.name.slice(0, 40)}
-                  </div>
-                </Link>
-                <Separator />
-              </>
-            ))}
-          </div>
-        </div>
-      </div>
+      <FileNavSidebar allFiles={allFiles} />
     </div>
   );
 };

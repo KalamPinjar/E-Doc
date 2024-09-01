@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-
 import {
   Carousel,
   CarouselContent,
@@ -13,7 +12,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -40,6 +38,7 @@ export function CarouselDocs() {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
+    // Fetch the files uploaded by the current user
     const fetchFiles = async () => {
       const response = await fetch("/api/files");
       if (!response.ok) {
@@ -60,20 +59,18 @@ export function CarouselDocs() {
       </div>
       <Carousel setApi={setApi} className="w-[400px] h-[400px]">
         <CarouselContent>
-          {files?.map((_, index) => (
+          {files?.map((file, index) => (
             <CarouselItem key={index}>
               <Card>
-                <CardContent className="flex justify-center items-center p-6 pointer-events-auto aspect-auto">
-                  {files &&
-                  files[index].url &&
-                  files[index].url.endsWith(".pdf") ? (
+                <CardContent className="flex justify-center items-center gap-6 h-[420px] pointer-events-auto aspect-auto">
+                  {file.url?.endsWith(".pdf") ? (
                     <Link
                       className="px-2 cursor-pointer"
-                      href={`/dashboard/documents/${files[index].id}`}
+                      href={`/dashboard/documents/${file.id}`}
                     >
                       <iframe
                         title="pdf"
-                        src={files[index].url}
+                        src={file.url}
                         className="w-[380px] h-[380px]"
                         style={{ border: "none" }}
                         allowFullScreen
@@ -82,10 +79,10 @@ export function CarouselDocs() {
                   ) : (
                     <Link
                       className="cursor-pointer"
-                      href={`/dashboard/documents/${files[index].id}`}
+                      href={`/dashboard/documents/${file.id}`}
                     >
                       <Image
-                        src={files[index].url || ""}
+                        src={file.url || ""}
                         alt="image"
                         width={280}
                         height={280}

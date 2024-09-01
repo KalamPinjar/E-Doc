@@ -18,18 +18,32 @@ model User {
   id        String   @id @default(uuid())
   userId    String   @unique
   email     String   @db.Text
-  files     File[]   
+  files     File[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  permissions    FilePermission[] @relation("FilePermissions")
+  FilePermission FilePermission[] @relation("AllowedUsers")
 }
 
 model File {
-  id        String   @id @default(uuid())
-  name      String
-  fileKey   String
-  url       String?
-  fileId    String
-  user      User?    @relation(fields: [fileId], references: [userId])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String            @id @default(uuid())
+  name            String
+  fileKey         String
+  url             String?
+  fileId          String
+  user            User?             @relation(fields: [fileId], references: [userId])
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  permissions     FilePermission[]  @relation("FilePermissions")
+}
+
+model FilePermission {
+  id            String   @id @default(uuid())
+  ownerUserId   String
+  allowedUserId String
+  fileId        String
+  createdAt     DateTime @default(now())
+  owner         User     @relation("FilePermissions", fields: [ownerUserId], references: [userId])
+  allowedUser   User     @relation("AllowedUsers", fields: [allowedUserId], references: [userId])
+  file          File     @relation("FilePermissions", fields: [fileId], references: [id])
 }
