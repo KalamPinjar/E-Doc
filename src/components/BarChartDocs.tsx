@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/chart";
 import { useEffect, useState } from "react";
 
-
 const chartConfig = {
   documents: {
     label: "Documents",
@@ -43,51 +42,55 @@ export function BarChartDocs() {
     fetchData();
   }, []);
   return (
-    <Card className="flex flex-col mt-10 p-2 w-[500px] h-[400px]">
-      <CardHeader>
-        <CardTitle>Documents Upload Data</CardTitle>
-        <CardDescription>January - December {new Date().getFullYear()} </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <BarChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              top: 25,
-              
-            }}
-            barSize={20}
-            barCategoryGap={1}
-            barGap={0.5}
-            maxBarSize={40}
-            stackOffset="sign"
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Bar dataKey="documents" fill="var(--color-documents)" radius={1}>
-              <LabelList
-                position="top"
-                offset={12}
-                className="fill-foreground"
-                fontSize={12}
+    <div className="flex flex-col">
+      <h2 className="mb-4 font-bold text-black text-center text-xl dark:text-white">
+        Your Real Time Graph 
+      </h2>
+      <Card className="flex flex-col p-2 w-[500px] h-[400px]">
+        <CardHeader>
+          <CardTitle>Documents Upload Data</CardTitle>
+          <CardDescription>
+            January - December {new Date().getFullYear()}{" "}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={chartConfig}>
+            <BarChart
+              accessibilityLayer
+              data={chartData}
+              margin={{
+                top: 25,
+              }}
+              barSize={20}
+              barCategoryGap={1}
+              barGap={0.5}
+              maxBarSize={40}
+              stackOffset="sign"
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
               />
-            </Bar>
-          </BarChart>
-        </ChartContainer>
-      </CardContent>
-      
-    </Card>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
+              <Bar dataKey="documents" fill="var(--color-documents)" radius={1}>
+                <LabelList
+                  position="top"
+                  offset={12}
+                  className="fill-foreground"
+                  fontSize={12}
+                />
+              </Bar>
+            </BarChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

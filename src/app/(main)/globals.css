@@ -6,7 +6,7 @@
   :root {
     --dark: #161616;
     --blur: clamp(56px, 10vw, 80px);
-    --gradient: linear-gradient(-45deg, #5d00f2 40%, #0e8bff 30%, #07920e 30%);
+    --gradient: linear-gradient(-45deg, #5d00f2 60%, #0e8bff 30%, #daa805 10%);
     --size: clamp(128px, 18vw, 256px);
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -135,6 +135,7 @@
   animation: color 20s infinite;
 
 }
+
 
 @keyframes color {
   0% {

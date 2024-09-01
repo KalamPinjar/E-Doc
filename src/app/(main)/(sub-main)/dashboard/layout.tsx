@@ -1,15 +1,28 @@
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 
+import dynamic from 'next/dynamic'
+import Link from "next/link";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
-import Navbar from "@/components/Navbar";
 import { Toaster } from "react-hot-toast";
-import { Button } from "@/components/ui/button";
-import Link from 'next/link';
 import { Separator } from "@/components/ui/separator";
-import Menu from "./components/Menu";
-import Upload from "./components/Upload";
 import { File } from "lucide-react";
+
+import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+
+const FileNavSidebar = dynamic(() => import("./components/FileNavSidebar"), {
+  ssr: false,
+});
+
+const Menu = dynamic(() => import("./components/Menu"), {
+  ssr: false,
+});
+
+const Upload = dynamic(() => import("./components/Upload"), {
+  ssr: false,
+})
+
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -30,11 +43,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex gap-3 bg-[#f1f1f1] shadow-black shadow-md p-1 rounded-md w-[510px]">
             <Link
               className="ml-auto"
+              rel="noopener noreferrer"
               href="/docs"
               target="_blank"
-              rel="noopener noreferrer"
             >
-              <Button className="bg-transparent hover:bg-gray-300 dark:text-black">
+              <Button className="bg-transparent hover:bg-gray-300 text-black">
                 Docs
               </Button>
             </Link>
@@ -44,7 +57,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-transparent hover:bg-gray-300 dark:text-black">
+              <Button className="bg-transparent hover:bg-gray-300 text-black">
                 Documents <File className="ml-2 w-4 h-4 fill-blue-600" />
               </Button>
             </Link>
@@ -54,6 +67,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Upload />
           </div>
         </div>
+        
         {children}
       </div>
     </div>

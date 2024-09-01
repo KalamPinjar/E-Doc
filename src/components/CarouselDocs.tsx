@@ -53,10 +53,11 @@ export function CarouselDocs() {
   }, [api]);
 
   return (
-    <div className="mx-auto max-w-xs">
-      <div className="mb-2 ml-20 text-center text-muted-foreground text-sm">
-        Slide {current} of {files.length}
-      </div>
+    <div className="mx-auto mt-5">
+      <h2 className="mb-4 font-bold text-black text-center text-xl dark:text-white">
+        Your Documents
+      </h2>
+
       <Carousel setApi={setApi} className="w-[400px] h-[400px]">
         <CarouselContent>
           {files?.map((file, index) => (
@@ -96,6 +97,9 @@ export function CarouselDocs() {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
+        <div className="mb-2 text-center text-muted-foreground text-sm">
+          Slide {current} of {files.length}
+        </div>
       </Carousel>
     </div>
   );

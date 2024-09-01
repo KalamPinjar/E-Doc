@@ -7,9 +7,9 @@ interface FileNavSidebarProps {
 }
 const FileNavSidebar: React.FC<FileNavSidebarProps> = ({ allFiles }) => {
   return (
-    <div className="flex flex-col justify-start items-center gap-4 bg-white shadow-sm mt-16 p-2 rounded-md w-[400px] h-fit">
+    <div className="flex flex-col justify-start items-center gap-4 bg-white shadow-sm mt-16 p-2 rounded-md w-[300px] h-fit">
       <p className="mt-2 font-bold text-black text-xl">Your Files</p>
-      <div className="flex flex-col justify-start items-center gap-4 mt-2 h-fit">
+      <div className="flex flex-col justify-start items-center gap-4 p-4 w-full h-fit">
         {allFiles.map((file) => (
           <div className="w-full" key={file.id}>
             <Link  href={`/dashboard/documents/${file.id}`}>

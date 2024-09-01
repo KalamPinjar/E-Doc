@@ -18,14 +18,13 @@ export default function Home() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-
             },
             body: JSON.stringify({ userId }),
           });
 
           if (response.ok) {
             console.log("User data stored successfully");
-            // Redirect or perform other actions
+            
           } else {
             console.error("Failed to store user data");
           }
