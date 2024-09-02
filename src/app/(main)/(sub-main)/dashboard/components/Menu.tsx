@@ -72,7 +72,7 @@ const Menu = () => {
     <Menubar className="inline-flex bg-inherit border-none">
       <MenubarMenu>
         <MenubarTrigger className="text-black cursor-pointer">
-          Manage <Settings2 className="w-4 h-4" />
+          Manage <Settings2 className="w-[0.90rem] md:w-4 h-[0.90rem] md:h-4" />
         </MenubarTrigger>
         <MenubarContent className="mt-1">
           <MenubarItem className="cursor-pointer" onClick={handleShare}>

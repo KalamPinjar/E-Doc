@@ -29,7 +29,7 @@ export function SharedFiles() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mt-10 md:mt-5 lg:mt-0">
       <h2 className="font-bold text-black text-center text-xl dark:text-white">
         Files Shared with You
       </h2>
@@ -43,7 +43,7 @@ export function SharedFiles() {
             <>
               <CardContent
                 key={file.id}
-                className="flex flex-col justify-start items-start gap-1 w-[150px] h-fit pointer-events-auto aspect-auto"
+                className="flex flex-col justify-start items-start gap-1 w-full h-fit pointer-events-auto aspect-auto"
               >
                 <p className="mt-2 text-gray-600 text-sm">
                   Shared by: {file.sharedBy}

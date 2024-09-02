@@ -43,10 +43,10 @@ export function BarChartDocs() {
   }, []);
   return (
     <div className="flex flex-col">
-      <h2 className="mb-4 font-bold text-black text-center text-xl dark:text-white">
-        Your Real Time Graph 
+      <h2 className="mt-10 md:mt-0 mb-4 font-bold text-black text-center text-xl dark:text-white">
+        Your Real Time Graph
       </h2>
-      <Card className="flex flex-col p-2 w-[500px] h-[400px]">
+      <Card className="flex flex-col w-full lg:w-[600px] md:max-w-[500px] h-[400px]">
         <CardHeader>
           <CardTitle>Documents Upload Data</CardTitle>
           <CardDescription>

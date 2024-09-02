@@ -53,12 +53,12 @@ export function CarouselDocs() {
   }, [api]);
 
   return (
-    <div className="mx-auto mt-5">
+    <div className="mx-auto mb-10 md:mb-0 md:ml-5">
       <h2 className="mb-4 font-bold text-black text-center text-xl dark:text-white">
         Your Documents
       </h2>
 
-      <Carousel setApi={setApi} className="w-[400px] h-[400px]">
+      <Carousel setApi={setApi} className="w-[300px] lg:w-[400px] h-[400px]">
         <CarouselContent>
           {files?.map((file, index) => (
             <CarouselItem key={index}>
@@ -66,13 +66,13 @@ export function CarouselDocs() {
                 <CardContent className="flex justify-center items-center gap-6 h-[420px] pointer-events-auto aspect-auto">
                   {file.url?.endsWith(".pdf") ? (
                     <Link
-                      className="px-2 cursor-pointer"
+                      className="cursor-pointer"
                       href={`/dashboard/documents/${file.id}`}
                     >
                       <iframe
                         title="pdf"
                         src={file.url}
-                        className="w-[380px] h-[380px]"
+                        className="w-[90%] lg:w-[380px] h-[90%] lg:h-[380px]"
                         style={{ border: "none" }}
                         allowFullScreen
                       />
@@ -84,9 +84,10 @@ export function CarouselDocs() {
                     >
                       <Image
                         src={file.url || ""}
-                        alt="image"
+                        alt={`Image - ${file.name}`}
                         width={280}
                         height={280}
+                        className="p-8 object-contain"
                       />
                     </Link>
                   )}
