@@ -41,7 +41,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
         <div className="flex justify-end w-full">
-          <div className="flex md:gap-3 bg-[#f1f1f1] shadow-black shadow-md mr-1 md:mr-2 p-1 rounded-md w-[300px] md:w-[510px]">
+          <div className="flex md:gap-3 bg-[#f1f1f1] shadow-black shadow-md mr-1 md:mr-2 p-1 rounded-md w-[300px] md:w-[383px]">
             <Link
               className="ml-auto"
               rel="noopener noreferrer"

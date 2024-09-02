@@ -45,7 +45,7 @@ const Documents = () => {
   };
 
   return (
-    <div className="flex h-full gap-4  mt-5">
+    <div className="flex md:flex-row flex-col h-full lg:gap-4 gap-1 mt-5">
       {isLoading ? (
         <div className="mt-10 flex justify-center items-center h-full w-full text-white">
           <Loader2 className="w-6 h-6 animate-spin" />
