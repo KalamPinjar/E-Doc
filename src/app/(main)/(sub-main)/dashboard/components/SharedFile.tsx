@@ -34,7 +34,7 @@ export function SharedFiles() {
         Files Shared with You
       </h2>
       {sharedFiles.length === 0 ? (
-        <p className="w-[200px] text-center text-white">
+        <p className="w-fit text-black/70 text-center dark:text-white">
           No files have been shared with you yet.
         </p>
       ) : (

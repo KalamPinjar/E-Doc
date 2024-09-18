@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 "use client";
 import { Button } from "@/components/ui/button";
 import { File } from "@prisma/client";
@@ -84,7 +85,7 @@ const Documents = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Image className="w-4 h-4" />
+                  <Image  className="w-4 h-4" />
                 </div>
               )}
               <Button

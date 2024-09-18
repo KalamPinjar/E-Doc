@@ -25,8 +25,15 @@ export async function DELETE(request: Request) {
       return new NextResponse("File not found", { status: 404 });
     }
 
+    // Delete related permissions
+    await db.filePermission.deleteMany({
+      where: { fileId: id },
+    });
+
+    // Delete the file from storage
     await utapi.deleteFiles(file.fileKey);
 
+    // Delete the file record from the database
     await db.file.delete({ where: { id } });
 
     return new NextResponse("File Deleted!", { status: 200 });

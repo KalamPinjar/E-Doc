@@ -44,12 +44,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="flex md:gap-3 bg-[#f1f1f1] shadow-black shadow-md mr-1 md:mr-2 p-1 rounded-md w-[300px] md:w-[383px]">
             <Link
               className="ml-auto"
-              rel="noopener noreferrer"
-              href="/docs"
-              target="_blank"
+              href="/dashboard/home"
             >
               <Button className="bg-transparent hover:bg-gray-300 text-black">
-                Docs
+                Home
               </Button>
             </Link>
             <Separator className="mr-1 md:mr-2" orientation="vertical" />

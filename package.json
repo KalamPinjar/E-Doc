@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "npx prisma generate",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.3.2",
-    "@prisma/client": "^5.19.0",
+    "@prisma/client": "^5.19.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-menubar": "^1.1.1",
@@ -44,7 +45,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8.4.41",
-    "prisma": "^5.19.0",
+    "prisma": "^5.19.1",
     "tailwindcss": "^3.4.10",
     "typescript": "^5"
   }

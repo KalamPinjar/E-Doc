@@ -72,7 +72,7 @@ export function CarouselDocs() {
                       <iframe
                         title="pdf"
                         src={file.url}
-                        className="w-[90%] lg:w-[380px] h-[90%] lg:h-[380px]"
+                        className="w-full lg:w-[380px] h-[380px] lg:h-[380px]"
                         style={{ border: "none" }}
                         allowFullScreen
                       />
